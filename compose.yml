@@ -1,0 +1,13 @@
+services:
+  default:
+    build:
+      context: registry
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - data:/var/lib/registry
+
+volumes:
+  data:
+

@@ -2,11 +2,16 @@ services:
   default:
     build:
       context: registry
+    environment:
+      REGISTRY_HTTP_ADDR: "0.0.0.0:443"
+      REGISTRY_HTTP_TLS_CERTIFICATE: "/certs/cert.pem"
+      REGISTRY_HTTP_TLS_KEY: "/certs/cert-key.pem"
     restart: always
     ports:
-      - 5000:5000
+      - 443:443
     volumes:
       - data:/var/lib/registry
+      - ./certs:/certs
 
 volumes:
   data:
